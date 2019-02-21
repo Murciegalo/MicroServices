@@ -1,0 +1,19 @@
+﻿<Window x:Class="ClienteAPI.Ventanas.LoginConductor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteAPI.Ventanas"
+        mc:Ignorable="d"
+        Title="LoginConductor" Height="450" Width="800">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="387" Margin="10,10,0,0" VerticalAlignment="Top" Width="760">
+            <TextBox x:Name="TextBox_mail" HorizontalAlignment="Left" Height="42" Margin="86,83,0,0" TextWrapping="Wrap" Text="dav@email.com" VerticalAlignment="Top" Width="306" FontSize="24"/>
+            <TextBox x:Name="TextBox_contrasena" HorizontalAlignment="Left" Height="42" Margin="86,160,0,0" TextWrapping="Wrap" Text="pepito" VerticalAlignment="Top" Width="306" FontSize="24"/>
+            <Button x:Name="Button_adelante" Content="¡Acelera!" HorizontalAlignment="Left" Height="62" Margin="487,118,0,0" VerticalAlignment="Top" Width="202" FontSize="24" Click="Button_adelante_Click"/>
+            <Button x:Name="Button_registrarConductor" Content="Registrar" HorizontalAlignment="Left" Height="29" Margin="186,232,0,0" VerticalAlignment="Top" Width="455" FontSize="18" Click="Button_registrarConductor_Click"/>
+            <Button x:Name="Button_volver" Content="Volver" HorizontalAlignment="Left" Height="22" Margin="319,355,0,0" VerticalAlignment="Top" Width="162" Click="Button_volver_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>

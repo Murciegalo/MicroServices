@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelDBStoreContainer">
+    <EntitySet Name="PersonaSet" EntityType="ModelDB.Store.PersonaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ViajeSet" EntityType="ModelDB.Store.ViajeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CocheSet" EntityType="ModelDB.Store.CocheSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FlotaSet" EntityType="ModelDB.Store.FlotaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonaSet_Conductor" EntityType="ModelDB.Store.PersonaSet_Conductor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonaSet_Cliente" EntityType="ModelDB.Store.PersonaSet_Cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonaSet_Admin" EntityType="ModelDB.Store.PersonaSet_Admin" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ConductorCoche" Association="ModelDB.Store.ConductorCoche">
+      <End Role="Conductor" EntitySet="PersonaSet_Conductor" />
+      <End Role="Coche" EntitySet="CocheSet" />
+    </AssociationSet>
+    <AssociationSet Name="ConductorViaje" Association="ModelDB.Store.ConductorViaje">
+      <End Role="Conductor" EntitySet="PersonaSet_Conductor" />
+      <End Role="Viaje" EntitySet="ViajeSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteViaje" Association="ModelDB.Store.ClienteViaje">
+      <End Role="Cliente" EntitySet="PersonaSet_Cliente" />
+      <End Role="Viaje" EntitySet="ViajeSet" />
+    </AssociationSet>
+    <AssociationSet Name="CocheFlota" Association="ModelDB.Store.CocheFlota">
+      <End Role="Coche" EntitySet="CocheSet" />
+      <End Role="Flota" EntitySet="FlotaSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Conductor_inherits_Persona" Association="ModelDB.Store.FK_Conductor_inherits_Persona">
+      <End Role="Persona" EntitySet="PersonaSet" />
+      <End Role="Conductor" EntitySet="PersonaSet_Conductor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_inherits_Persona" Association="ModelDB.Store.FK_Cliente_inherits_Persona">
+      <End Role="Persona" EntitySet="PersonaSet" />
+      <End Role="Cliente" EntitySet="PersonaSet_Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_inherits_Persona" Association="ModelDB.Store.FK_Admin_inherits_Persona">
+      <End Role="Persona" EntitySet="PersonaSet" />
+      <End Role="Admin" EntitySet="PersonaSet_Admin" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PersonaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="foto" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="dni" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fechanacimiento" Type="datetime" Nullable="false" />
+    <Property Name="contrasena" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cuentabancaria" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="telefono" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ViajeSet">
+    <Key>
+      <PropertyRef Name="IdViaje" />
+    </Key>
+    <Property Name="IdViaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="origen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="destino" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="distancia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="horainicio" Type="datetime" Nullable="false" />
+    <Property Name="horafinal" Type="datetime" Nullable="false" />
+    <Property Name="tarifa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="puntuacion" Type="int" Nullable="true" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="IdConductor" Type="int" Nullable="false" />
+    <Property Name="estadoViaje" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="comentarioCliente" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CocheSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="matricula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="modelo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="color" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="plaza" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="distintivoambiental" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mascota" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fumar" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlotaSet">
+    <Key>
+      <PropertyRef Name="IdFlota" />
+    </Key>
+    <Property Name="IdFlota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCoche" Type="int" Nullable="false" />
+    <Property Name="longitud" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="timeStampUbicacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="disponibilidadCoche" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="timeStampDisponibilidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Latitud" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonaSet_Conductor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="licencia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="puntuacion" Type="int" Nullable="true" />
+    <Property Name="estado" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IdCoche" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonaSet_Cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonaSet_Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ConductorCoche">
+    <End Role="Conductor" Type="ModelDB.Store.PersonaSet_Conductor" Multiplicity="*" />
+    <End Role="Coche" Type="ModelDB.Store.CocheSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Coche">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Conductor">
+        <PropertyRef Name="IdCoche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConductorViaje">
+    <End Role="Conductor" Type="ModelDB.Store.PersonaSet_Conductor" Multiplicity="1" />
+    <End Role="Viaje" Type="ModelDB.Store.ViajeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conductor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Viaje">
+        <PropertyRef Name="IdConductor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteViaje">
+    <End Role="Cliente" Type="ModelDB.Store.PersonaSet_Cliente" Multiplicity="1" />
+    <End Role="Viaje" Type="ModelDB.Store.ViajeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Viaje">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CocheFlota">
+    <End Role="Coche" Type="ModelDB.Store.CocheSet" Multiplicity="1" />
+    <End Role="Flota" Type="ModelDB.Store.FlotaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coche">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flota">
+        <PropertyRef Name="idCoche" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Conductor_inherits_Persona">
+    <End Role="Persona" Type="ModelDB.Store.PersonaSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Conductor" Type="ModelDB.Store.PersonaSet_Conductor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Conductor">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_inherits_Persona">
+    <End Role="Persona" Type="ModelDB.Store.PersonaSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cliente" Type="ModelDB.Store.PersonaSet_Cliente" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_inherits_Persona">
+    <End Role="Persona" Type="ModelDB.Store.PersonaSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Admin" Type="ModelDB.Store.PersonaSet_Admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersonaSet" EntityType="ModelDB.Persona" />
+          <EntitySet Name="ViajeSet" EntityType="ModelDB.Viaje" />
+          <EntitySet Name="CocheSet" EntityType="ModelDB.Coche" />
+          <AssociationSet Name="ConductorCoche" Association="ModelDB.ConductorCoche">
+            <End Role="Conductor" EntitySet="PersonaSet" />
+            <End Role="Coche" EntitySet="CocheSet" />
+          </AssociationSet>
+          <AssociationSet Name="ConductorViaje" Association="ModelDB.ConductorViaje">
+            <End Role="Conductor" EntitySet="PersonaSet" />
+            <End Role="Viaje" EntitySet="ViajeSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClienteViaje" Association="ModelDB.ClienteViaje">
+            <End Role="Cliente" EntitySet="PersonaSet" />
+            <End Role="Viaje" EntitySet="ViajeSet" />
+          </AssociationSet>
+          <EntitySet Name="FlotaSet" EntityType="ModelDB.Flota" />
+          <AssociationSet Name="CocheFlota" Association="ModelDB.CocheFlota">
+            <End Role="Coche" EntitySet="CocheSet" />
+            <End Role="Flota" EntitySet="FlotaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="foto" Type="String" Nullable="true" />
+          <Property Name="dni" Type="String" Nullable="false" />
+          <Property Name="fechanacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="contrasena" Type="String" Nullable="false" />
+          <Property Name="cuentabancaria" Type="String" Nullable="true" />
+          <Property Name="telefono" Type="String" Nullable="true" />
+          <Property Name="email" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Admin" BaseType="ModelDB.Persona">
+        </EntityType>
+        <EntityType Name="Cliente" BaseType="ModelDB.Persona">
+          <NavigationProperty Name="Viaje" Relationship="ModelDB.ClienteViaje" FromRole="Cliente" ToRole="Viaje" />
+        </EntityType>
+        <EntityType Name="Conductor" BaseType="ModelDB.Persona">
+          <Property Name="licencia" Type="String" Nullable="false" />
+          <Property Name="puntuacion" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Coche" Relationship="ModelDB.ConductorCoche" FromRole="Conductor" ToRole="Coche" />
+          <NavigationProperty Name="Viaje" Relationship="ModelDB.ConductorViaje" FromRole="Conductor" ToRole="Viaje" />
+          <Property Name="estado" Type="String" Nullable="true" />
+          <Property Name="IdCoche" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Viaje">
+          <Key>
+            <PropertyRef Name="IdViaje" />
+          </Key>
+          <Property Name="IdViaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="origen" Type="String" Nullable="false" />
+          <Property Name="destino" Type="String" Nullable="false" />
+          <Property Name="distancia" Type="String" Nullable="false" />
+          <Property Name="horainicio" Type="DateTime" Nullable="false" />
+          <Property Name="horafinal" Type="DateTime" Nullable="false" />
+          <Property Name="tarifa" Type="String" Nullable="false" />
+          <Property Name="puntuacion" Type="Int32" Nullable="true" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdConductor" Type="Int32" Nullable="false" />
+          <Property Name="estadoViaje" Type="String" Nullable="false" />
+          <NavigationProperty Name="Conductor" Relationship="ModelDB.ConductorViaje" FromRole="Viaje" ToRole="Conductor" />
+          <NavigationProperty Name="Cliente" Relationship="ModelDB.ClienteViaje" FromRole="Viaje" ToRole="Cliente" />
+          <Property Name="comentarioCliente" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Coche">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="matricula" Type="String" Nullable="false" />
+          <Property Name="modelo" Type="String" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" />
+          <Property Name="plaza" Type="String" Nullable="false" />
+          <Property Name="distintivoambiental" Type="String" Nullable="false" />
+          <Property Name="mascota" Type="String" Nullable="false" />
+          <Property Name="fumar" Type="String" Nullable="false" />
+          <NavigationProperty Name="Conductor" Relationship="ModelDB.ConductorCoche" FromRole="Coche" ToRole="Conductor" />
+          <NavigationProperty Name="Flota" Relationship="ModelDB.CocheFlota" FromRole="Coche" ToRole="Flota" />
+        </EntityType>
+        <Association Name="ConductorCoche">
+          <End Type="ModelDB.Conductor" Role="Conductor" Multiplicity="*" />
+          <End Type="ModelDB.Coche" Role="Coche" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Coche">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Conductor">
+              <PropertyRef Name="IdCoche" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ConductorViaje">
+          <End Type="ModelDB.Conductor" Role="Conductor" Multiplicity="1" />
+          <End Type="ModelDB.Viaje" Role="Viaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Viaje">
+              <PropertyRef Name="IdConductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClienteViaje">
+          <End Type="ModelDB.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="ModelDB.Viaje" Role="Viaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Viaje">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Flota">
+          <Key>
+            <PropertyRef Name="IdFlota" />
+          </Key>
+          <Property Name="IdFlota" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="idCoche" Type="Int32" Nullable="false" />
+          <Property Name="longitud" Type="String" Nullable="false" />
+          <Property Name="timeStampUbicacion" Type="String" Nullable="false" />
+          <Property Name="disponibilidadCoche" Type="String" Nullable="false" />
+          <Property Name="timeStampDisponibilidad" Type="String" Nullable="false" />
+          <NavigationProperty Name="Coche" Relationship="ModelDB.CocheFlota" FromRole="Flota" ToRole="Coche" />
+          <Property Name="Latitud" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="CocheFlota">
+          <End Type="ModelDB.Coche" Role="Coche" Multiplicity="1" />
+          <End Type="ModelDB.Flota" Role="Flota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coche">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flota">
+              <PropertyRef Name="idCoche" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelDBStoreContainer" CdmEntityContainer="ModelDBContainer">
+    <EntitySetMapping Name="PersonaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Persona)">
+        <MappingFragment StoreEntitySet="PersonaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="cuentabancaria" ColumnName="cuentabancaria" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Conductor)">
+        <MappingFragment StoreEntitySet="PersonaSet_Conductor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="licencia" ColumnName="licencia" />
+          <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="IdCoche" ColumnName="IdCoche" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Cliente)">
+        <MappingFragment StoreEntitySet="PersonaSet_Cliente">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Admin)">
+        <MappingFragment StoreEntitySet="PersonaSet_Admin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViajeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Viaje)">
+        <MappingFragment StoreEntitySet="ViajeSet">
+          <ScalarProperty Name="IdViaje" ColumnName="IdViaje" />
+          <ScalarProperty Name="origen" ColumnName="origen" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="distancia" ColumnName="distancia" />
+          <ScalarProperty Name="horainicio" ColumnName="horainicio" />
+          <ScalarProperty Name="horafinal" ColumnName="horafinal" />
+          <ScalarProperty Name="tarifa" ColumnName="tarifa" />
+          <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+          <ScalarProperty Name="estadoViaje" ColumnName="estadoViaje" />
+          <ScalarProperty Name="comentarioCliente" ColumnName="comentarioCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CocheSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Coche)">
+        <MappingFragment StoreEntitySet="CocheSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="plaza" ColumnName="plaza" />
+          <ScalarProperty Name="distintivoambiental" ColumnName="distintivoambiental" />
+          <ScalarProperty Name="mascota" ColumnName="mascota" />
+          <ScalarProperty Name="fumar" ColumnName="fumar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlotaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelDB.Flota)">
+        <MappingFragment StoreEntitySet="FlotaSet">
+          <ScalarProperty Name="IdFlota" ColumnName="IdFlota" />
+          <ScalarProperty Name="idCoche" ColumnName="idCoche" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="timeStampUbicacion" ColumnName="timeStampUbicacion" />
+          <ScalarProperty Name="disponibilidadCoche" ColumnName="disponibilidadCoche" />
+          <ScalarProperty Name="timeStampDisponibilidad" ColumnName="timeStampDisponibilidad" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="ClienteAPI.Ventanas.RegistroCoche"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteAPI.Ventanas"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid Background="White">
+        <Grid HorizontalAlignment="Left" Height="382" Margin="28,20,0,0" VerticalAlignment="Top" Width="734">
+            <Button x:Name="Button_Registrar" Content="Registrar" HorizontalAlignment="Left" Margin="156,342,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.411,-0.691" Click="Button_Registrar_Click"/>
+            <Button x:Name="Button_Volver" Content="Volver" HorizontalAlignment="Left" Margin="354,342,0,0" VerticalAlignment="Top" Width="75" Click="Button_Volver_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,52,0,0" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top" Height="19" Width="141" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" TextAlignment="Center"/>
+            <TextBox x:Name="TextModelo" HorizontalAlignment="Left" Height="23" Margin="187,48,0,0" TextWrapping="Wrap" Text="Modelo de vehiculo" VerticalAlignment="Top" Width="228"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,96,0,0" TextWrapping="Wrap" Text="Color" VerticalAlignment="Top" RenderTransformOrigin="-1.478,0.777" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" Width="141" TextAlignment="Center"/>
+            <TextBox x:Name="TextColor"  HorizontalAlignment="Left" Height="23" Margin="187,96,0,0" TextWrapping="Wrap" Text="Color del vehiculo" VerticalAlignment="Top" Width="228"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,151,0,0" TextWrapping="Wrap" Text="Plazas" VerticalAlignment="Top" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" Width="141" TextAlignment="Center"/>
+            <TextBox x:Name="TextPLazas" HorizontalAlignment="Left" Height="23" Margin="187,151,0,0" TextWrapping="Wrap" Text="Plazas del vehiculo" VerticalAlignment="Top" Width="228"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,205,0,0" TextWrapping="Wrap" Text="Distintivo ambiental" VerticalAlignment="Top" RenderTransformOrigin="-0.105,-1.392" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" Width="141" TextAlignment="Center"/>
+            <TextBox x:Name="TextDistintivo" HorizontalAlignment="Left" Height="23" Margin="187,199,0,0" TextWrapping="Wrap" Text="Distintivo ambiental" VerticalAlignment="Top" Width="228"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,253,0,0" TextWrapping="Wrap" Text="Permitir mascotas" VerticalAlignment="Top" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" Width="141" TextAlignment="Center"/>
+            <TextBox x:Name="TextMascotas" HorizontalAlignment="Left" Height="23" Margin="187,247,0,0" TextWrapping="Wrap" Text="Si/No" VerticalAlignment="Top" Width="228"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,304,0,0" TextWrapping="Wrap" Text="Permitir Fumar" VerticalAlignment="Top" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" Width="141" TextAlignment="Center"/>
+            <TextBox x:Name="TextFumar" HorizontalAlignment="Left" Height="23" Margin="187,298,0,0" TextWrapping="Wrap" Text="Si/No" VerticalAlignment="Top" Width="228"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,10,0,0" TextWrapping="Wrap" Text="Matricula" VerticalAlignment="Top" Height="19" Width="141" FontFamily="Verdana" FontSize="14" Background="#FF1EA1DE" TextAlignment="Center"/>
+            <TextBox x:Name="TextMatricula" HorizontalAlignment="Left" Height="23" Margin="187,6,0,0" TextWrapping="Wrap" Text="Matricula" VerticalAlignment="Top" Width="228"/>
+        </Grid>
+    </Grid>
+</Window>

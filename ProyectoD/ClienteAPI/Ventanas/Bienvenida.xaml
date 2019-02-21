@@ -1,0 +1,18 @@
+﻿<Window x:Class="ClienteAPI.Ventanas.Bienvenida"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteAPI.Ventanas"
+        mc:Ignorable="d"
+        Title="Bienvenida" Height="450" Width="800">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="388" Margin="10,10,0,0" VerticalAlignment="Top" Width="751">
+            <TextBlock HorizontalAlignment="Left" Margin="243,56,0,0" TextWrapping="Wrap" Text="¿Qué desea?" VerticalAlignment="Top" FontSize="36" FontFamily="Simplified Arabic Fixed"/>
+            <Button Content="Quiero un coche" HorizontalAlignment="Left" Margin="261,131,0,0" VerticalAlignment="Top" Width="212" Height="49" Click="Button_Cliente_Click" FontSize="20"/>
+            <Button Content="Quiero conducir" HorizontalAlignment="Left" Margin="261,198,0,0" VerticalAlignment="Top" Width="212" Height="49" Click="Button_Conductor_Click" FontSize="20"/>
+            <Button Content="Admin." HorizontalAlignment="Left" Margin="210,323,0,0" VerticalAlignment="Top" Width="314" Height="29" Click="Button_Admin_Click" FontSize="12"/>
+        </Grid>
+
+    </Grid>
+</Window>
